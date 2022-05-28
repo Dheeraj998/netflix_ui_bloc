@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_ui/application/downloads/downloads_bloc.dart';
 import 'package:netflix_ui/core/colors/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
+import 'package:netflix_ui/core/strings.dart';
 import 'package:netflix_ui/presentation/widgets/app_bar_widget.dart';
 
 class ScreenDownload extends StatelessWidget {
@@ -47,7 +47,7 @@ class Section2 extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       BlocProvider.of<DownloadsBloc>(context)
-          .add(DownloadsEvent.getDownloadsImages());
+          .add(const DownloadsEvent.getDownloadsImages());
     });
     final size = MediaQuery.of(context).size;
 
@@ -69,37 +69,46 @@ class Section2 extends StatelessWidget {
               fontSize: 15,
             )),
         kHeight,
-        SizedBox(
-          width: size.width,
-          height: size.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Center(
-                child: CircleAvatar(
-                  radius: size.width * 0.35,
-                  backgroundColor: Colors.grey.withOpacity(0.5),
-                ),
-              ),
-              DownloadsImageWidget(
-                image: imageList[0],
-                margin: const EdgeInsets.only(left: 170, bottom: 0),
-                angle: 25,
-                size: Size(size.width * 0.35, size.width * 0.55),
-              ),
-              DownloadsImageWidget(
-                image: imageList[1],
-                margin: const EdgeInsets.only(right: 170, bottom: 0),
-                angle: -25,
-                size: Size(size.width * 0.35, size.width * 0.55),
-              ),
-              DownloadsImageWidget(
-                image: imageList[2],
-                margin: const EdgeInsets.only(bottom: 10),
-                size: Size(size.width * 0.4, size.width * 0.6),
-              ),
-            ],
-          ),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return SizedBox(
+              width: size.width,
+              height: size.width,
+              child: state.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Center(
+                          child: CircleAvatar(
+                            radius: size.width * 0.35,
+                            backgroundColor: Colors.grey.withOpacity(0.5),
+                          ),
+                        ),
+                        DownloadsImageWidget(
+                          image:
+                              '$imageAppendUrl${state.downloads[0].posterPath}',
+                          margin: const EdgeInsets.only(left: 170, bottom: 0),
+                          angle: 25,
+                          size: Size(size.width * 0.35, size.width * 0.55),
+                        ),
+                        DownloadsImageWidget(
+                          image:
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
+                          margin: const EdgeInsets.only(right: 170, bottom: 0),
+                          angle: -25,
+                          size: Size(size.width * 0.35, size.width * 0.55),
+                        ),
+                        DownloadsImageWidget(
+                          image:
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
+                          margin: const EdgeInsets.only(bottom: 10),
+                          size: Size(size.width * 0.4, size.width * 0.6),
+                        ),
+                      ],
+                    ),
+            );
+          },
         ),
       ],
     );
