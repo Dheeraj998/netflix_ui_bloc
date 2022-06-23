@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DownloadsEventTearOff {
   const _$DownloadsEventTearOff();
 
-  _GetDownloadsImages getDownloadsImages() {
-    return const _GetDownloadsImages();
+  GetDownloadsImages getDownloadsImages() {
+    return const GetDownloadsImages();
   }
 }
 
@@ -46,17 +46,17 @@ mixin _$DownloadsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetDownloadsImages value) getDownloadsImages,
+    required TResult Function(GetDownloadsImages value) getDownloadsImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult Function(GetDownloadsImages value)? getDownloadsImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult Function(GetDownloadsImages value)? getDownloadsImages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,38 +80,47 @@ class _$DownloadsEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GetDownloadsImagesCopyWith<$Res> {
-  factory _$GetDownloadsImagesCopyWith(
-          _GetDownloadsImages value, $Res Function(_GetDownloadsImages) then) =
-      __$GetDownloadsImagesCopyWithImpl<$Res>;
+abstract class $GetDownloadsImagesCopyWith<$Res> {
+  factory $GetDownloadsImagesCopyWith(
+          GetDownloadsImages value, $Res Function(GetDownloadsImages) then) =
+      _$GetDownloadsImagesCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$GetDownloadsImagesCopyWithImpl<$Res>
+class _$GetDownloadsImagesCopyWithImpl<$Res>
     extends _$DownloadsEventCopyWithImpl<$Res>
-    implements _$GetDownloadsImagesCopyWith<$Res> {
-  __$GetDownloadsImagesCopyWithImpl(
-      _GetDownloadsImages _value, $Res Function(_GetDownloadsImages) _then)
-      : super(_value, (v) => _then(v as _GetDownloadsImages));
+    implements $GetDownloadsImagesCopyWith<$Res> {
+  _$GetDownloadsImagesCopyWithImpl(
+      GetDownloadsImages _value, $Res Function(GetDownloadsImages) _then)
+      : super(_value, (v) => _then(v as GetDownloadsImages));
 
   @override
-  _GetDownloadsImages get _value => super._value as _GetDownloadsImages;
+  GetDownloadsImages get _value => super._value as GetDownloadsImages;
 }
 
 /// @nodoc
 
-class _$_GetDownloadsImages implements _GetDownloadsImages {
-  const _$_GetDownloadsImages();
+class _$GetDownloadsImages
+    with DiagnosticableTreeMixin
+    implements GetDownloadsImages {
+  const _$GetDownloadsImages();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DownloadsEvent.getDownloadsImages()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'DownloadsEvent.getDownloadsImages'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _GetDownloadsImages);
+        (other.runtimeType == runtimeType && other is GetDownloadsImages);
   }
 
   @override
@@ -148,7 +157,7 @@ class _$_GetDownloadsImages implements _GetDownloadsImages {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetDownloadsImages value) getDownloadsImages,
+    required TResult Function(GetDownloadsImages value) getDownloadsImages,
   }) {
     return getDownloadsImages(this);
   }
@@ -156,7 +165,7 @@ class _$_GetDownloadsImages implements _GetDownloadsImages {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult Function(GetDownloadsImages value)? getDownloadsImages,
   }) {
     return getDownloadsImages?.call(this);
   }
@@ -164,7 +173,7 @@ class _$_GetDownloadsImages implements _GetDownloadsImages {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult Function(GetDownloadsImages value)? getDownloadsImages,
     required TResult orElse(),
   }) {
     if (getDownloadsImages != null) {
@@ -174,8 +183,8 @@ class _$_GetDownloadsImages implements _GetDownloadsImages {
   }
 }
 
-abstract class _GetDownloadsImages implements DownloadsEvent {
-  const factory _GetDownloadsImages() = _$_GetDownloadsImages;
+abstract class GetDownloadsImages implements DownloadsEvent {
+  const factory GetDownloadsImages() = _$GetDownloadsImages;
 }
 
 /// @nodoc
@@ -185,12 +194,11 @@ class _$DownloadsStateTearOff {
   _DownloadsState call(
       {required bool isLoading,
       required List<Downloads> downloads,
-      required Option<Either<MainFailure, List<Downloads>>>
-          downloadsFailureorSuccessOption}) {
+      required bool isError}) {
     return _DownloadsState(
       isLoading: isLoading,
       downloads: downloads,
-      downloadsFailureorSuccessOption: downloadsFailureorSuccessOption,
+      isError: isError,
     );
   }
 }
@@ -201,9 +209,10 @@ const $DownloadsState = _$DownloadsStateTearOff();
 /// @nodoc
 mixin _$DownloadsState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<Downloads> get downloads => throw _privateConstructorUsedError;
-  Option<Either<MainFailure, List<Downloads>>>
-      get downloadsFailureorSuccessOption => throw _privateConstructorUsedError;
+  List<Downloads> get downloads =>
+      throw _privateConstructorUsedError; // required Option<Either<MainFailure, List<Downloads>>>
+//     downloadsFailureorSuccessOption,\
+  bool get isError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DownloadsStateCopyWith<DownloadsState> get copyWith =>
@@ -215,11 +224,7 @@ abstract class $DownloadsStateCopyWith<$Res> {
   factory $DownloadsStateCopyWith(
           DownloadsState value, $Res Function(DownloadsState) then) =
       _$DownloadsStateCopyWithImpl<$Res>;
-  $Res call(
-      {bool isLoading,
-      List<Downloads> downloads,
-      Option<Either<MainFailure, List<Downloads>>>
-          downloadsFailureorSuccessOption});
+  $Res call({bool isLoading, List<Downloads> downloads, bool isError});
 }
 
 /// @nodoc
@@ -235,7 +240,7 @@ class _$DownloadsStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? downloads = freezed,
-    Object? downloadsFailureorSuccessOption = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -246,11 +251,10 @@ class _$DownloadsStateCopyWithImpl<$Res>
           ? _value.downloads
           : downloads // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
-      downloadsFailureorSuccessOption: downloadsFailureorSuccessOption ==
-              freezed
-          ? _value.downloadsFailureorSuccessOption
-          : downloadsFailureorSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, List<Downloads>>>,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -262,11 +266,7 @@ abstract class _$DownloadsStateCopyWith<$Res>
           _DownloadsState value, $Res Function(_DownloadsState) then) =
       __$DownloadsStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {bool isLoading,
-      List<Downloads> downloads,
-      Option<Either<MainFailure, List<Downloads>>>
-          downloadsFailureorSuccessOption});
+  $Res call({bool isLoading, List<Downloads> downloads, bool isError});
 }
 
 /// @nodoc
@@ -284,7 +284,7 @@ class __$DownloadsStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? downloads = freezed,
-    Object? downloadsFailureorSuccessOption = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_DownloadsState(
       isLoading: isLoading == freezed
@@ -295,34 +295,45 @@ class __$DownloadsStateCopyWithImpl<$Res>
           ? _value.downloads
           : downloads // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
-      downloadsFailureorSuccessOption: downloadsFailureorSuccessOption ==
-              freezed
-          ? _value.downloadsFailureorSuccessOption
-          : downloadsFailureorSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, List<Downloads>>>,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_DownloadsState implements _DownloadsState {
+class _$_DownloadsState
+    with DiagnosticableTreeMixin
+    implements _DownloadsState {
   const _$_DownloadsState(
       {required this.isLoading,
       required this.downloads,
-      required this.downloadsFailureorSuccessOption});
+      required this.isError});
 
   @override
   final bool isLoading;
   @override
   final List<Downloads> downloads;
-  @override
-  final Option<Either<MainFailure, List<Downloads>>>
-      downloadsFailureorSuccessOption;
+  @override // required Option<Either<MainFailure, List<Downloads>>>
+//     downloadsFailureorSuccessOption,\
+  final bool isError;
 
   @override
-  String toString() {
-    return 'DownloadsState(isLoading: $isLoading, downloads: $downloads, downloadsFailureorSuccessOption: $downloadsFailureorSuccessOption)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DownloadsState(isLoading: $isLoading, downloads: $downloads, isError: $isError)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DownloadsState'))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
+      ..add(DiagnosticsProperty('downloads', downloads))
+      ..add(DiagnosticsProperty('isError', isError));
   }
 
   @override
@@ -332,9 +343,7 @@ class _$_DownloadsState implements _DownloadsState {
             other is _DownloadsState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.downloads, downloads) &&
-            const DeepCollectionEquality().equals(
-                other.downloadsFailureorSuccessOption,
-                downloadsFailureorSuccessOption));
+            const DeepCollectionEquality().equals(other.isError, isError));
   }
 
   @override
@@ -342,7 +351,7 @@ class _$_DownloadsState implements _DownloadsState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(downloads),
-      const DeepCollectionEquality().hash(downloadsFailureorSuccessOption));
+      const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
   @override
@@ -354,16 +363,15 @@ abstract class _DownloadsState implements DownloadsState {
   const factory _DownloadsState(
       {required bool isLoading,
       required List<Downloads> downloads,
-      required Option<Either<MainFailure, List<Downloads>>>
-          downloadsFailureorSuccessOption}) = _$_DownloadsState;
+      required bool isError}) = _$_DownloadsState;
 
   @override
   bool get isLoading;
   @override
   List<Downloads> get downloads;
-  @override
-  Option<Either<MainFailure, List<Downloads>>>
-      get downloadsFailureorSuccessOption;
+  @override // required Option<Either<MainFailure, List<Downloads>>>
+//     downloadsFailureorSuccessOption,\
+  bool get isError;
   @override
   @JsonKey(ignore: true)
   _$DownloadsStateCopyWith<_DownloadsState> get copyWith =>

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_ui/domain/core/failures/main_failure.dart';
@@ -15,24 +16,41 @@ part 'downloads_state.dart';
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final IdownloadsRepo _downloadsRepo;
   DownloadsBloc(this._downloadsRepo) : super(DownloadsState.initial()) {
-    on<_GetDownloadsImages>((event, emit) async {
-      emit(
-        state.copyWith(
-          isLoading: true,
-          downloadsFailureorSuccessOption: none(),
-        ),
-      );
+    on<GetDownloadsImages>((event, emit) async {
+      if (state.downloads.isNotEmpty) {
+        emit(DownloadsState(
+          isLoading: false,
+          downloads: state.downloads,
+
+          // downloadsFailureorSuccessOption: none(),
+          isError: false,
+        ));
+        return;
+      }
+      // emit(const DownloadsState(
+      //   isLoading: true,
+      //   downloads: [],
+      //   // downloadsFailureorSuccessOption: none()
+      //   isError: false,
+      // ));
+
       final Either<MainFailure, List<Downloads>> downloadsOption =
           await _downloadsRepo.getDownloadsImages();
+
       log(downloadsOption.toString());
-      emit(downloadsOption.fold(
+      final _state = downloadsOption.fold(
           (failure) => state.copyWith(
-              isLoading: false,
-              downloadsFailureorSuccessOption: some(Left(failure))),
-          (success) => state.copyWith(
-              isLoading: false,
-              downloads: success,
-              downloadsFailureorSuccessOption: some(Right(success)))));
+                isLoading: false,
+                // downloadsFailureorSuccessOption: some(Left(failure)),
+                isError: true,
+              ),
+          (list) => state.copyWith(
+                isLoading: false,
+                downloads: list,
+                // downloadsFailureorSuccessOption: some(Right(success))
+              ));
+
+      emit(_state);
     });
   }
 }

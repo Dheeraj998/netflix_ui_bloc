@@ -11,7 +11,7 @@ class Maincard extends StatelessWidget {
       width: 150,
       height: 250,
       decoration: BoxDecoration(
-          image: DecorationImage(
+          image: const DecorationImage(
             image: NetworkImage(
               'https://www.themoviedb.org/t/p/w440_and_h660_face/xH2wTVlsUlYeFEOVGFDaamHkMCm.jpg',
             ),

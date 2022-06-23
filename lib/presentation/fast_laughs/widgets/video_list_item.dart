@@ -28,7 +28,7 @@ class VideoListItem extends StatelessWidget {
                     color: Colors.white,
                     iconSize: 30,
                     onPressed: () {},
-                    icon: Icon(Icons.volume_off),
+                    icon: const Icon(Icons.volume_off),
                   ),
                 ),
                 Column(
@@ -78,7 +78,7 @@ class VideoActionsWidget extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(color: kWhiteColor, fontSize: 16),
+            style: const TextStyle(color: kWhiteColor, fontSize: 16),
           )
         ],
       ),

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
-import 'package:netflix_ui/presentation/home/widgets/customButtonWidget.dart';
 import 'package:netflix_ui/presentation/new_and_hot/widgets/coming_soon_widget.dart';
 import 'package:netflix_ui/presentation/new_and_hot/widgets/everyones_watching_widget.dart';
-
-import 'package:netflix_ui/presentation/widgets/video_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({Key? key}) : super(key: key);
@@ -16,9 +13,9 @@ class ScreenNewAndHot extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(90),
+          preferredSize: const Size.fromHeight(90),
           child: AppBar(
-            title: Text(
+            title: const Text(
               'New & Hot',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
             ),
@@ -39,10 +36,10 @@ class ScreenNewAndHot extends StatelessWidget {
             bottom: TabBar(
                 labelColor: kBlackColor,
                 labelStyle:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 unselectedLabelColor: kWhiteColor,
                 unselectedLabelStyle:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 isScrollable: true,
                 indicator: BoxDecoration(
                     color: Colors.white,
@@ -69,7 +66,7 @@ class ScreenNewAndHot extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         return Column(
-          children: [
+          children: const [
             kHeight,
             ComingSoonWidget(),
           ],
@@ -86,7 +83,7 @@ class ScreenNewAndHot extends StatelessWidget {
 //       ],
   Widget _buildEveryOneWatching() {
     return ListView.builder(
-      itemBuilder: (context, index) => EveryOnesWatchingWidget(),
+      itemBuilder: (context, index) => const EveryOnesWatchingWidget(),
       itemCount: 5,
     );
   }

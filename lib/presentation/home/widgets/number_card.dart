@@ -11,7 +11,7 @@ class NumberCard extends StatelessWidget {
       children: [
         Row(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 250,
               width: 40,
             ),
@@ -19,7 +19,7 @@ class NumberCard extends StatelessWidget {
               width: 150,
               height: 250,
               decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
                       'https://www.themoviedb.org/t/p/w440_and_h660_face/xH2wTVlsUlYeFEOVGFDaamHkMCm.jpg',
@@ -37,7 +37,7 @@ class NumberCard extends StatelessWidget {
             strokeColor: Colors.white,
             child: Text(
               "${index + 1}",
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 130,
                   decoration: TextDecoration.none,

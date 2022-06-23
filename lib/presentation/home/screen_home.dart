@@ -1,16 +1,12 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:netflix_ui/core/colors/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
-import 'package:netflix_ui/presentation/home/widgets/backgroundCard.dart';
-import 'package:netflix_ui/presentation/home/widgets/customButtonWidget.dart';
-import 'package:netflix_ui/presentation/home/widgets/number_card.dart';
+import 'package:netflix_ui/presentation/home/widgets/background_card.dart';
+
 import 'package:netflix_ui/presentation/home/widgets/number_title_card.dart';
-import 'package:netflix_ui/presentation/widgets/main_card.dart';
-import 'package:netflix_ui/presentation/widgets/main_title.dart';
+
 import 'package:netflix_ui/presentation/widgets/main_title_card.dart';
 
 ValueNotifier scrollNotifier = ValueNotifier(true);
@@ -23,7 +19,7 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
         body: ValueListenableBuilder(
             valueListenable: scrollNotifier,
-            builder: (BuildContext, dynamic, _) {
+            builder: (BuildContext ctx, dynamic, _) {
               return NotificationListener<UserScrollNotification>(
                 onNotification: (notification) {
                   final ScrollDirection direction = notification.direction;
@@ -38,7 +34,7 @@ class ScreenHome extends StatelessWidget {
                 child: Stack(
                   children: [
                     ListView(
-                      children: [
+                      children: const [
                         BackgroundCard(),
                         MainTitleCard(
                           title: 'Released in the Past Year',
@@ -62,7 +58,7 @@ class ScreenHome extends StatelessWidget {
                     ),
                     scrollNotifier.value
                         ? AnimatedContainer(
-                            duration: Duration(milliseconds: 1500),
+                            duration: const Duration(milliseconds: 1500),
                             width: double.infinity,
                             height: 80,
                             color: Colors.black.withOpacity(.5),
@@ -76,7 +72,7 @@ class ScreenHome extends StatelessWidget {
                                       width: 60,
                                       fit: BoxFit.cover,
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     const Icon(
                                       Icons.cast,
                                       color: kWhiteColor,
@@ -94,7 +90,7 @@ class ScreenHome extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
-                                  children: [
+                                  children: const [
                                     Text(
                                       'TV Shows',
                                       style: kHomeText,
@@ -106,7 +102,7 @@ class ScreenHome extends StatelessWidget {
                               ],
                             ),
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                   ],
                 ),
               );

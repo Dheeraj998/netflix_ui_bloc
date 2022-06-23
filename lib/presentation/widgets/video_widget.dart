@@ -28,7 +28,7 @@ class VideoWidget extends StatelessWidget {
               color: Colors.white,
               iconSize: 20,
               onPressed: () {},
-              icon: Icon(Icons.volume_off),
+              icon:const Icon(Icons.volume_off),
             ),
           ),
         ),

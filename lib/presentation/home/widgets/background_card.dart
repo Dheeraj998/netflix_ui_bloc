@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/core/colors/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
-import 'package:netflix_ui/presentation/home/widgets/customButtonWidget.dart';
+import 'package:netflix_ui/presentation/home/widgets/custombutton_widget.dart';
 
 class BackgroundCard extends StatelessWidget {
   const BackgroundCard({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class BackgroundCard extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(kMainImage), fit: BoxFit.cover)),
         ),
@@ -26,12 +26,12 @@ class BackgroundCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CustomButtonWidget(
+                const CustomButtonWidget(
                   icon: Icons.add,
                   text: 'MyList',
                 ),
-                _PlayButton(),
-                CustomButtonWidget(
+                _playButton(),
+                const CustomButtonWidget(
                   icon: Icons.info,
                   text: 'Info',
                 ),
@@ -43,7 +43,7 @@ class BackgroundCard extends StatelessWidget {
     );
   }
 
-  TextButton _PlayButton() {
+  TextButton _playButton() {
     return TextButton.icon(
         onPressed: () {},
         icon: const Icon(
@@ -54,7 +54,7 @@ class BackgroundCard extends StatelessWidget {
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(kWhiteColor)),
         label: const Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             'Play',
             style: TextStyle(fontSize: 20, color: kBlackColor),

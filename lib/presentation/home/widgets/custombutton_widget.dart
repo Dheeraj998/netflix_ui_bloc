@@ -6,7 +6,7 @@ class CustomButtonWidget extends StatelessWidget {
   final String text;
   final double iconSize;
   final double textSize;
-  CustomButtonWidget({
+  const CustomButtonWidget({
     Key? key,
     required this.icon,
     required this.text,
