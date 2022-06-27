@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_ui/application/Search/search_bloc.dart';
 import 'package:netflix_ui/application/downloads/downloads_bloc.dart';
 import 'package:netflix_ui/application/fast_laugh/fast_laugh_bloc.dart';
+import 'package:netflix_ui/application/hot_and_new/hot_and_new_bloc.dart';
 import 'package:netflix_ui/domain/core/di/injectable.dart';
 import 'package:netflix_ui/presentation/main_page/screen_main_page.dart';
 
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => getIt<DownloadsBloc>()),
         BlocProvider(create: (context) => getIt<SearchBloc>()),
-        BlocProvider(create: (context) => getIt<FastLaughBloc>())
+        BlocProvider(create: (context) => getIt<FastLaughBloc>()),
+        BlocProvider(create: (context) => getIt<HotAndNewBloc>())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -56,12 +56,12 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
     });
 
     on<LikeVideo>((event, emit) async {
-      likedVideosIdsNotifier.value.add(event.id);
-      likedVideosIdsNotifier.notifyListeners();
+      // likedVideosIdsNotifier.value.add(event.id);
+      // likedVideosIdsNotifier.notifyListeners();
     });
     on<UnlikeVideo>((event, emit) {
-      likedVideosIdsNotifier.value.remove(event.id);
-      likedVideosIdsNotifier.notifyListeners();
+      // likedVideosIdsNotifier.value.remove(event.id);
+      // likedVideosIdsNotifier.notifyListeners();
     });
   }
 }

@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+
 import 'package:netflix_ui/core/constants.dart';
 import 'package:netflix_ui/presentation/home/widgets/custombutton_widget.dart';
 import 'package:netflix_ui/presentation/widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieNAme;
+  final String description;
   const ComingSoonWidget({
     Key? key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieNAme,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -16,11 +29,13 @@ class ComingSoonWidget extends StatelessWidget {
         SizedBox(
           width: 50,
           height: 450,
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: const [
-            Text('FEB',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text('11',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            Text(month,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text(day,
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
           ]),
         ),
         SizedBox(
@@ -29,48 +44,50 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            const  VideoWidget(),
+              VideoWidget(
+                image: posterPath,
+              ),
               Row(
                 children: [
-                  const Text(
-                    "TALL GRIRL2",
-                    style: TextStyle(
-                        letterSpacing: -5,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: Text(
+                      movieNAme,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          letterSpacing: -2,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-               const   Spacer(),
-                  Row(
-                    children:const [
-                      CustomButtonWidget(
-                        icon: Icons.access_alarm,
-                        text: "Remind me",
-                        textSize: 12,
-                        iconSize: 20,
-                      ),
-                      kWidth,
-                      CustomButtonWidget(
-                        icon: Icons.info,
-                        text: "Info",
-                        textSize: 12,
-                        iconSize: 20,
-                      ),
-                      kWidth
-                    ],
+                  const CustomButtonWidget(
+                    icon: Icons.access_alarm,
+                    text: "Remind me",
+                    textSize: 12,
+                    iconSize: 20,
                   ),
+                  kWidth,
+                  const CustomButtonWidget(
+                    icon: Icons.info,
+                    text: "Info",
+                    textSize: 12,
+                    iconSize: 20,
+                  ),
+                  kWidth,
                 ],
               ),
               kHeight,
-              const Text('Coming On Friday'),
+              Text('Coming On $day $month'),
               kHeight,
-              const Text(
-                'TALL GIRL 2',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Text(
+                movieNAme,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               kHeight,
-              const Text(
-                'Landing the Lead in the school musical is a dream come true for Jodi,until the pressure sends her confidence--and her relationship --into a trailspin',
-                style: TextStyle(color: Colors.grey),
+              Text(
+                description,
+                style: const TextStyle(color: Colors.grey),
               )
             ],
           ),

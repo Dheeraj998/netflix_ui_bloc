@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+
 import 'package:netflix_ui/core/constants.dart';
 import 'package:netflix_ui/presentation/home/widgets/custombutton_widget.dart';
 import 'package:netflix_ui/presentation/widgets/video_widget.dart';
 
 class EveryOnesWatchingWidget extends StatelessWidget {
+  final String posterPath;
+  final String movieNAme;
+  final String description;
   const EveryOnesWatchingWidget({
     Key? key,
+    required this.posterPath,
+    required this.movieNAme,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -24,7 +31,7 @@ class EveryOnesWatchingWidget extends StatelessWidget {
           style: TextStyle(color: Colors.grey),
         ),
         kHeight50,
-        const VideoWidget(),
+        // const VideoWidget(),
         kHeight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
