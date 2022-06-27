@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:netflix_ui/core/constants.dart';
-
 class VideoWidget extends StatelessWidget {
   final String image;
   const VideoWidget({
@@ -19,6 +17,19 @@ class VideoWidget extends StatelessWidget {
           child: Image.network(
             image,
             fit: BoxFit.cover,
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progress) {
+              if (progress == null) {
+                return child;
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+            errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
+              return const Center(child: Icon(Icons.wifi));
+            },
           ),
         ),
         Positioned(

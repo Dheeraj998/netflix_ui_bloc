@@ -10,9 +10,9 @@ import 'package:netflix_ui/presentation/search/screen_search.dart';
 class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({Key? key}) : super(key: key);
   final _pages = [
-    ScreenHome(),
-    ScreenNewAndHot(),
-    ScreenFastAndLaugh(),
+    const ScreenHome(),
+    const ScreenNewAndHot(),
+    const ScreenFastAndLaugh(),
     ScreenSearch(),
     ScreenDownload()
   ];

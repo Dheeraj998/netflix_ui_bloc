@@ -28,8 +28,20 @@ class HotAndNewImpl implements HotAndNewService {
   }
 
   @override
-  Future<Either<MainFailure, HotAndNew>> getHotAndNewTvData() {
-    // TODO: implement getHotAndNewTvData
-    throw UnimplementedError();
+  Future<Either<MainFailure, HotAndNew>> getHotAndNewTvData() async {
+    try {
+      final response = await Dio(BaseOptions()).get(ApiEndPoints.hotAndNewTv);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final result = HotAndNew.fromJson(response.data);
+        print(response.data);
+
+        print("result  $result");
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } catch (e) {
+      return const Left(MainFailure.clientFilure());
+    }
   }
 }
