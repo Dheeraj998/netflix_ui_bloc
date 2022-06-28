@@ -33,9 +33,7 @@ class HotAndNewImpl implements HotAndNewService {
       final response = await Dio(BaseOptions()).get(ApiEndPoints.hotAndNewTv);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = HotAndNew.fromJson(response.data);
-        print(response.data);
 
-        print("result  $result");
         return Right(result);
       } else {
         return const Left(MainFailure.serverFailure());

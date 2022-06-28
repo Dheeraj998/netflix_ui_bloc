@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/application/fast_laugh/fast_laugh_bloc.dart';
 import 'package:netflix_ui/core/colors/colors.dart';

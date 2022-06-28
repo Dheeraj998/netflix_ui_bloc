@@ -71,7 +71,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       //call searchMvie Api
       final _result =
           await _searchService.searchMovies(movieQuery: event.movieQuery);
-      print(_result);
       final _state = _result.fold((MainFailure f) {
         return const SearchState(
             searchResultList: [],

@@ -38,7 +38,7 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
       final _result = await _downloadService.getDownloadsImages();
 
       final _state = _result.fold((MainFailure failure) {
-        return FastLaughState(
+        return const FastLaughState(
           videoList: [],
           isLoading: false,
           isError: true,
